@@ -11,44 +11,65 @@
 </head>
 
 <body>
-    <section id="music">
-        <h2>Mijn afspeellijst</h2>
-        <div>
-            <div class="music-card" id="0" style="background-image: url(music/0.jpeg); rotate: -1deg;">
-                <div>
-                    <h3>Billie Jean</h3>
-                    <p>Michael Jackson</p>
+    <main>
+        <section id="music">
+            <h2>Mijn afspeellijst</h2>
+            <div>
+                <div class="card music-card" id="0" style="background-image: url(music/0.jpeg); rotate: -1deg;">
+                    <div>
+                        <h3>Billie Jean</h3>
+                        <p>Michael Jackson</p>
+                    </div>
+                    <a class="tip"
+                        data-tip="Dit is toen ik klein was heel lang mijn lievelingsnummer geweest. Daarom heb ik hem in mijn afspeellijst geplaatst.">info</a>
+                </div>
+                <div class="card music-card" id="1" style="background-image: url(music/1.jpeg); rotate: 3deg;">
+                    <div>
+                        <h3>Mirrors</h3>
+                        <p>Justin Timberlake</p>
+                    </div>
+                    <a class="tip"
+                        data-tip="Toen mijn oma uit Zeeland stervende was, ging ik haar bijna elk weekend met mijn moeder bezoeken. We hadden toen meestal een CD van dit album op staan. Dit nummer doet mij en mijn moeder het meeste denken aan mijn oma.">info</a>
+                </div>
+                <div class="card music-card" id="2" style="background-image: url(music/2.jpeg); rotate: -5deg;">
+                    <div>
+                        <h3>Papaoutai</h3>
+                        <p>Stromae</p>
+                    </div>
+                    <a class="tip"
+                        data-tip="Ik houd van de Franse taal. Deze artiest en dit nummer zijn bovendien ook gewoon heel erg goed.">info</a>
+                </div>
+                <div class="card music-card" id="3" style="background-image: url(music/3.jpeg); rotate: 1deg;">
+                    <div>
+                        <h3>I Ain't Worried</h3>
+                        <p>OneRepublic</p>
+                    </div>
+                    <a class="tip"
+                        data-tip="Ik weeg situaties heel goed af in plaats van impulsieve besluiten te maken. Daarnaast maak ik me (te) weinig zorgen om mijn huiswerk.">info</a>
+                </div>
+                <div class="card music-card" id="4" style="background-image: url(music/4.jpeg); rotate: -3deg;">
+                    <div>
+                        <h3>Vegas</h3>
+                        <p>Jesper Kyd</p>
+                    </div>
+                    <a class="tip"
+                        data-tip="Ook al speel ik Hitman nog niet heel erg lang, toch voelt dit nummer uit die game heel nostalgisch. Het komt uit voor 2006.">info</a>
                 </div>
             </div>
-            <div class="music-card" id="1" style="background-image: url(music/1.jpeg); rotate: 3deg;">
-                <div>
-                    <h3>Mirrors</h3>
-                    <p>Justin Timberlake</p>
-                </div>
+            <audio id="music-player">
+                <source id="music-source" src="" type="audio/mpeg">
+            </audio>
+        </section>
+    </main>
+    <div id="popup" onclick="document.querySelectorAll('.open').forEach(e=>e.classList.remove('open'))">
+        <div id="popup-content">
+            <div style="display: flex; width: 100%; justify-content: space-between;">
+                <h2>Toelichting</h2>
+                <a id="close">close</a>
             </div>
-            <div class="music-card" id="2" style="background-image: url(music/2.jpeg); rotate: -5deg;">
-                <div>
-                    <h3>Papaoutai</h3>
-                    <p>Stromae</p>
-                </div>
-            </div>
-            <div class="music-card" id="3" style="background-image: url(music/3.jpeg); rotate: 1deg;">
-                <div>
-                    <h3>I Ain't Worried</h3>
-                    <p>OneRepublic</p>
-                </div>
-            </div>
-            <div class="music-card" id="4" style="background-image: url(music/4.jpeg); rotate: -3deg;">
-                <div>
-                    <h3>Vegas</h3>
-                    <p>Jesper Kyd</p>
-                </div>
-            </div>
+            <p id="popup-body">De toelichting kon niet worden opgehaald.</p>
         </div>
-        <audio id="music-player">
-            <source id="music-source" src="" type="audio/mpeg">
-        </audio>
-    </section>
+    </div>
 </body>
 
 </html>

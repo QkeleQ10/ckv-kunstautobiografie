@@ -2,12 +2,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0');
 
 body {
+    margin: 0;
     max-width: 100vw;
-    overflow-x: hidden;
+    overflow: hidden;
 }
 
 #music {
     padding: 2em;
+}
+
+.card:has(.tip.open) {
+    z-index: 100;
 }
 
 #music>div {
@@ -64,21 +69,79 @@ body {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    translate: -50% -50%;
     font-family: 'Material Symbols Outlined';
     content: 'play_arrow';
-    font-size: 0;
+    font-size: 3em;
+    scale: 0;
     text-shadow: 0 0 20px #000000;
-    transition: font-size 300ms;
+    transition: scale 300ms;
 }
 
 .music-card.playing>div:after {
     content: 'pause';
-    font-size: 3em;
+    scale: 1;
 }
 
 .music-card:hover>div:after {
-    font-size: 5em;
+    scale: 1.5;
+}
+
+.tip {
+    position: absolute;
+    top: 0.5em;
+    right: 0.5em;
+    font-family: 'Material Symbols Outlined';
+    color: #ffffff;
+    text-shadow: 0 0 20px #000000;
+    font-size: 2em;
+    cursor: help;
+    transition: scale 300ms;
+}
+
+.tip:hover, .tip:hover {
+    scale: 1.25;
+}
+
+#close {
+    font-family: 'Material Symbols Outlined';
+    color: #333333;
+    font-size: 2em;
+    cursor: pointer;
+    transition: scale 300ms;
+}
+
+#close:hover, #close:focus {
+    scale: 1.25;
+}
+
+#popup {
+    display: flex;
+    align-items: flex-end;
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+    bottom: -100%;
+    transition: translate 300ms;
+    box-sizing: border-box;
+    z-index: -1;
+    background: #000000aa;
+}
+
+#popup.open {
+    translate: 0 -100%;
+    z-index: 98;
+}
+
+#popup-content {
+    background: #ffffff;
+    width: 100%;
+    z-index: 99;
+    padding: 3em;
+}
+
+body:has(#popup.open)>main>* {
+    pointer-events: none;
 }
 
 h1,
