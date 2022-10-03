@@ -24,3 +24,20 @@ document.querySelectorAll('.music-card').forEach(e => {
         musicPlr.paused ? e.classList.remove('playing') : e.classList.add('playing')
     })
 })
+
+function popupHTML(element, clarification) {
+    `<div id="popup" onclick="
+    document.querySelectorAll('.open').forEach(e=>e.classList.remove('open')); 
+    setTimeout(this.remove(), 300);">
+        <div id="popup-content">
+            <div style="display: flex; width: 100%; justify-content: space-between;">
+                <h2>Toelichting</h2>
+                <a id="close">close</a>
+            </div>
+            <div style="pointer-events: none;">${element.outerHTML}</div>
+            <p id="popup-body">${clarification}</p>
+        </div>
+    </div>`
+
+    // liever het element appenden ipv dupliceren!!
+}
