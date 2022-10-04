@@ -4,15 +4,14 @@ const musicSrc = document.querySelector('#music-source')
 document.querySelectorAll('.tip').forEach(e => {
     e.addEventListener('click', event => {
         event.stopPropagation()
-        document.getElementById('popup-body').innerText = event.target.getAttribute('data-tip')
-        document.getElementById('popup').classList.add('open')
-        event.target.classList.add('open')
+        event.target.classList.add('active')
+        openTip(event.target.parentElement, event.target.dataset.tip)
     })
 })
 
 document.querySelectorAll('.music-card').forEach(e => {
     e.addEventListener('click', () => {
-        const src = `music/${e.id}.mp3`
+        const src = `music/${e.dataset.music}.mp3`
         document.querySelectorAll('.playing').forEach(e1 => e1.classList.remove('playing'))
         if (musicSrc.getAttribute('src') != src) {
             musicSrc.src = src
@@ -25,19 +24,25 @@ document.querySelectorAll('.music-card').forEach(e => {
     })
 })
 
-function popupHTML(element, clarification) {
-    `<div id="popup" onclick="
-    document.querySelectorAll('.open').forEach(e=>e.classList.remove('open')); 
-    setTimeout(this.remove(), 300);">
-        <div id="popup-content">
-            <div style="display: flex; width: 100%; justify-content: space-between;">
-                <h2>Toelichting</h2>
-                <a id="close">close</a>
-            </div>
-            <div style="pointer-events: none;">${element.outerHTML}</div>
-            <p id="popup-body">${clarification}</p>
+function openTip(about, clarification) {
+    let popupContainer = document.createElement('div')
+    popupContainer.classList.add('popup-container')
+    document.body.appendChild(popupContainer)
+    popupContainer.innerHTML = `<div class="popup">
+        <div style="display: flex; width: 100%; justify-content: space-between;">
+            <h2>Toelichting over ${about.getAttribute('title')}</h2>
+            <a class="popup-close">close</a>
         </div>
+        <div class="popup-clone" style="pointer-events: none;"></div>
+        <p id="popup-body">${clarification}</p>
     </div>`
+    popupContainer.onclick = closeTip
+    let clone = about.cloneNode(true)
+    document.querySelector('.popup-clone').appendChild(clone)
+    document.querySelector('main').style.pointerEvents = "none"
+}
 
-    // liever het element appenden ipv dupliceren!!
+function closeTip(event) {
+    this.remove()
+    document.querySelector('main').style.pointerEvents = ""
 }

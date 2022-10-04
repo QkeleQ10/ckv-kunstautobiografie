@@ -1,7 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0');
 
-html, body {
+* {
+    transition: scale 300ms, rotate 300ms;
+}
+
+html,
+body {
     margin: 0;
     width: 100vw;
     overflow-x: hidden;
@@ -9,10 +14,6 @@ html, body {
 
 section {
     padding: 2em;
-}
-
-.card:has(.tip.open) {
-    z-index: 100;
 }
 
 #music>div {
@@ -43,7 +44,6 @@ section {
     outline: #ffffff solid 2px;
     color: #ffffff;
     cursor: pointer;
-    transition: scale 300ms, rotate 300ms;
 }
 
 .music-card:hover,
@@ -81,7 +81,6 @@ section {
     font-size: 3em;
     scale: 0;
     text-shadow: 0 0 20px #000000;
-    transition: scale 300ms;
 }
 
 .music-card.playing>div:after {
@@ -101,7 +100,6 @@ section {
     text-shadow: 0 0 20px #000000;
     font-size: 2em;
     cursor: help;
-    transition: scale 300ms;
 }
 
 .tip:hover,
@@ -109,46 +107,45 @@ section {
     scale: 1.25;
 }
 
-#close {
+.popup-container {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #00000080;
+    z-index: 100;
+    animation: popupContainerAppear 300ms;
+}
+
+.popup {
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+    align-items: center;
+    margin: 2em;
+    padding: 2em;
+    background: #ffffff;
+    animation: popupAppear 300ms;
+}
+
+.popup-clone>* {
+    margin: 0;
+}
+
+.popup-close {
     font-family: 'Material Symbols Outlined';
     color: #333333;
     font-size: 2em;
     cursor: pointer;
-    transition: scale 300ms;
 }
 
-#close:hover,
-#close:focus {
+.popup-close:hover,
+.popup-close:focus {
     scale: 1.25;
-}
-
-#popup {
-    display: flex;
-    align-items: flex-end;
-    position: absolute;
-    height: 100vh;
-    width: 100vw;
-    bottom: -100%;
-    transition: translate 300ms;
-    box-sizing: border-box;
-    z-index: -1;
-    background: #000000aa;
-}
-
-#popup.open {
-    translate: 0 -100%;
-    z-index: 98;
-}
-
-#popup-content {
-    background: #ffffff;
-    width: 100%;
-    z-index: 99;
-    padding: 3em;
-}
-
-body:has(#popup.open)>main>* {
-    pointer-events: none;
 }
 
 h1,
@@ -157,4 +154,23 @@ h3,
 p {
     margin: 0;
     font-family: 'Roboto Slab', sans-serif;
+}
+
+@keyframes popupContainerAppear {
+    from {
+        background: #00000000;
+    }
+    to {
+        background: #00000080;
+    }
+}
+
+@keyframes popupAppear {
+    from {
+        scale: 0;
+    }
+
+    to {
+        scale: 1
+    }
 }
