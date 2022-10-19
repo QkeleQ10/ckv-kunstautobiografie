@@ -5,7 +5,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/music.css">
+    <link rel="stylesheet" href="styles/opinion.css">
     <script src="index.js" defer></script>
     <title>Mijn kunstautobiografie</title>
 </head>
@@ -15,49 +17,49 @@
         <section id="music">
             <h2>Mijn afspeellijst</h2>
             <div>
-                <div class="card music-card" title="Billie Jean" data-music="0"
+                <div class="item card music-card" title="Billie Jean" data-music="0"
                     style="background-image: url(music/0.jpeg); rotate: -1deg;">
-                    <div>
+                    <div class="info-bar">
                         <h3>Billie Jean</h3>
                         <p>Michael Jackson</p>
                     </div>
-                    <a class="tip"
+                    <a class="tip-link"
                         data-tip="Dit is toen ik klein was heel lang mijn lievelingsnummer geweest. Daarom heb ik hem in mijn afspeellijst geplaatst.">info</a>
                 </div>
-                <div class="card music-card" title="Mirrors" data-music="1"
+                <div class="item card music-card" title="Mirrors" data-music="1"
                     style="background-image: url(music/1.jpeg); rotate: 3deg;">
-                    <div>
+                    <div class="info-bar">
                         <h3>Mirrors</h3>
                         <p>Justin Timberlake</p>
                     </div>
-                    <a class="tip"
+                    <a class="tip-link"
                         data-tip="Toen mijn oma uit Zeeland stervende was, ging ik haar bijna elk weekend met mijn moeder bezoeken. We hadden toen meestal een CD van dit album op staan. Dit nummer doet mij en mijn moeder het meeste denken aan mijn oma.">info</a>
                 </div>
-                <div class="card music-card" title="Papaoutai" data-music="2"
+                <div class="item card music-card" title="Papaoutai" data-music="2"
                     style="background-image: url(music/2.jpeg); rotate: -5deg;">
-                    <div>
+                    <div class="info-bar">
                         <h3>Papaoutai</h3>
                         <p>Stromae</p>
                     </div>
-                    <a class="tip"
+                    <a class="tip-link"
                         data-tip="Ik houd van de Franse taal. Deze artiest en dit nummer zijn bovendien ook gewoon heel erg goed.">info</a>
                 </div>
-                <div class="card music-card" title="I Ain't Worried" data-music="3"
+                <div class="item card music-card" title="I Ain't Worried" data-music="3"
                     style="background-image: url(music/3.jpeg); rotate: 1deg;">
-                    <div>
+                    <div class="info-bar">
                         <h3>I Ain't Worried</h3>
                         <p>OneRepublic</p>
                     </div>
-                    <a class="tip"
+                    <a class="tip-link"
                         data-tip="Ik weeg situaties heel goed af in plaats van impulsieve besluiten te maken. Daarnaast maak ik me (te) weinig zorgen om mijn huiswerk.">info</a>
                 </div>
-                <div class="card music-card" title="Vegas" data-music="4"
+                <div class="item card music-card" title="Vegas" data-music="4"
                     style="background-image: url(music/4.jpeg); rotate: -3deg;">
-                    <div>
+                    <div class="info-bar">
                         <h3>Vegas</h3>
                         <p>Jesper Kyd</p>
                     </div>
-                    <a class="tip"
+                    <a class="tip-link"
                         data-tip="Ook al speel ik Hitman nog niet heel erg lang, toch voelt dit nummer uit die game heel nostalgisch. Het komt uit voor 2006.">info</a>
                 </div>
             </div>
@@ -65,17 +67,40 @@
                 <source id="music-source" src="" type="audio/mpeg">
             </audio>
         </section>
-        <section id="art">
+        <section id="opinion">
             <h2>Mijn mening over kunst</h2>
-            <div class="card" id="art-remember" style="background-image: url(art/remember.jpg);">
-                <div>
-                    <h3>Relativity</h3>
-                    <p>M. C. Escher</p>
+            <div class="grid opinion-grid">
+                <div class="item grid-item opinion-hero" title="Relativity"
+                    style="background-image: url(opinion/hero.jpg);">
+                    <div class="info-bar">
+                        <h3>Relativity</h3>
+                        <p>M. C. Escher</p>
+                        <i>Digitaal in kleur nagetekend door ICPJuggalo1988</i>
+                    </div>
+                    <a class="tip-link"
+                        data-tip="Toen ik Escher's werken voor het eerst zag toen ik nog erg klein was, kon ik er urenlang gefascineerd naar kijken. Nog steeds vind ik ze erg indrukwekkend en cool om te zien.">info</a>
                 </div>
-                <a class="tip" data-tip="Informatietekstje hierover."></a>
+                <div class="item grid-item opinion-yes" title="Phasmophobia">
+                    <video src="opinion/0.mp4" height="100%" muted autoplay loop></video>
+                    <div class="info-bar">
+                        <h3>Phasmophobia</h3>
+                        <i>Horrorspel</i>
+                    </div>
+                    <a class="tip-link"
+                        data-tip="Phasmophobia is een game waarin je een geest moet opsporen en identificeren. Het kan best eng zijn, maar vooral heel erg leuk om te spelen met vrienden. Ik vind dit een kunstvorm omdat de ontwikkelaars zichzelf op een creatieve wijze hebben geuit en omdat het voor spelers/kijkers leuk is om te ontdekken.">info</a>
+                </div>
+                <div class="item grid-item opinion-yes" title="Bill Wurtz"
+                    style="background-image: url(opinion/1.jpg);">
+                    <div class="info-bar">
+                        <h3>Bill Wurtz</h3>
+                        <i>YouTube-kanaal</i>
+                    </div>
+                    <a class="tip-link"
+                        data-tip="Bill Wurtz gebruikt zijn YouTube-kanaal als creatieve uitlaatklep. Zijn video's lijken op eerste gezicht vaak onsamenhangend en apart. Eigenlijk is het gewoon een afspiegeling van zijn gedachtengang, maar dan weergegeven op een mooie manier. Er zit (soms) ook een boodschap in. Het blijft je aandacht vasthouden. Daarom vind ik dit een vorm van kunst.">info</a>
+                </div>
+                <div class="item grid-item opinion-no"></div>
+                <div class="item grid-item opinion-no"></div>
             </div>
-            <div id="card art-yes"></div>
-            <div id="card art-no"></div>
         </section>
     </main>
 </body>

@@ -1,0 +1,136 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0');
+
+* {
+    transition: scale 300ms, rotate 300ms;
+}
+
+html,
+body {
+    margin: 0;
+    width: 100vw;
+}
+
+h1,
+h2,
+h3,
+p {
+    margin: 0;
+    font-family: 'Roboto Slab', sans-serif;
+}
+
+section {
+    padding: 2em;
+}
+
+.item {
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+}
+
+.card {
+    margin-right: -5em;
+    box-shadow: 0 0.5em 1em #00000080;
+}
+
+.info-bar {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 1em;
+    color: white;
+    background: linear-gradient(#00000000, #000000dd);
+    text-shadow: 0 0 20px #000000;
+}
+
+.tip-link {
+    color: white;
+    position: absolute;
+    bottom: 0.5em;
+    right: 0.5em;
+    font-family: 'Material Symbols Outlined';
+    text-shadow: 0 0 20px #000000;
+    font-size: 2em;
+    cursor: help;
+    z-index: 2;
+}
+
+.tip-link:hover,
+.tip-link:hover {
+    scale: 1.25;
+}
+
+.popup-container {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #00000080;
+    z-index: 100;
+    cursor: pointer;
+    animation: popupContainerAppear 300ms;
+}
+
+.popup {
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+    align-items: center;
+    margin: 2em;
+    padding: 2em;
+    background: #ffffff;
+    animation: popupAppear 300ms;
+}
+
+.popup-clone>* {
+    margin: 0;
+    position: static !important;
+    translate: 0 !important;
+}
+
+.popup-clone .grid-item {
+    min-height: 40vh;
+    max-width: 80vw;
+    aspect-ratio: 16/9;
+}
+
+.popup-clone .opinion-hero {
+    aspect-ratio: 1;
+}
+
+.popup-close {
+    font-family: 'Material Symbols Outlined';
+    color: #333333;
+    font-size: 2em;
+    cursor: pointer;
+}
+
+.popup-close:hover,
+.popup-close:focus {
+    scale: 1.25;
+}
+
+@keyframes popupContainerAppear {
+    from {
+        background: #00000000;
+    }
+
+    to {
+        background: #00000080;
+    }
+}
+
+@keyframes popupAppear {
+    from {
+        scale: 0;
+    }
+
+    to {
+        scale: 1
+    }
+}

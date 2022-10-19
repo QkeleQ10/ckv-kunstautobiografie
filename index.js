@@ -1,7 +1,7 @@
 const musicPlr = document.querySelector('#music-player')
 const musicSrc = document.querySelector('#music-source')
 
-document.querySelectorAll('.tip').forEach(e => {
+document.querySelectorAll('.tip-link').forEach(e => {
     e.addEventListener('click', event => {
         event.stopPropagation()
         event.target.classList.add('active')

@@ -1,0 +1,56 @@
+#music>div {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    max-width: 1400px;
+    padding: 1em 0;
+    margin-right: 5em;
+}
+
+.music-card {
+    width: 17.5em;
+    box-sizing: border-box;
+    aspect-ratio: 1;
+    outline: #ffffff solid 2px;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+.music-card:hover,
+.music-card:focus {
+    scale: 1.05;
+    rotate: 0deg !important;
+    z-index: 10;
+}
+
+@media (min-width: 1450px) {
+    .music-card {
+        rotate: 0deg !important;
+    }
+}
+
+.music-card:after {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    font-family: 'Material Symbols Outlined';
+    content: 'play_arrow';
+    font-size: 3em;
+    scale: 0;
+    text-shadow: 0 0 20px #000000;
+    transition: scale 300ms;
+}
+
+.music-card.playing {
+    z-index: 9;
+}
+
+.music-card.playing:after {
+    content: 'pause';
+    scale: 1;
+}
+
+.music-card:hover:after {
+    scale: 1.5;
+}
