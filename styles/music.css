@@ -9,7 +9,6 @@
 
 .music-card {
     width: 17.5em;
-    box-sizing: border-box;
     aspect-ratio: 1;
     outline: #ffffff solid 2px;
     color: #ffffff;

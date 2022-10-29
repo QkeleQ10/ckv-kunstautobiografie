@@ -1,22 +1,12 @@
-#opinion {
-    color: white;
-    text-shadow: 0 0 20px #000000;
-}
-
 .opinion-grid {
     display: grid;
-    position: absolute;
     grid-template:
         'hero yes1 yes2' 18em
         'hero no1 no2' 12em
+        'home home home' auto
         / 40em 1fr 1fr;
-    z-index: -1;
-    translate: -2em -4em;
-    width: 100vw;
-}
-
-#opinion h2 {
-    text-shadow: 0 0 20px #000000;
+    gap: 2px;
+    margin: 1em -2em;
 }
 
 @media (max-width: 1150px) {
@@ -25,6 +15,7 @@
             'hero hero' 20em
             'yes1 yes2' 1fr
             'no1 no2' 1fr
+            'home home' auto
             / 1fr 1fr;
     }
 }
@@ -35,7 +26,9 @@
             'hero' 10em
             'yes1' 1fr
             'yes2' 1fr
-            'no1' 1fr 'no2' 1fr
+            'no1' 1fr
+            'no2' 1fr
+            'home' auto
             / 1fr;
     }
 }
@@ -44,9 +37,13 @@
     grid-area: hero;
 }
 
+.opinion-home {
+    grid-area: home;
+    padding: 1em 2em 0;
+}
+
 .grid-item {
     position: relative;
-    border: 2px solid white;
 }
 
 .grid-item>.info-bar {
@@ -58,7 +55,21 @@
     opacity: 1;
 }
 
-#opinion [title="Phasmophobia"] video {
+.grid-item video {
     width: 100%;
     object-fit: cover;
+}
+
+.opinion-yes>.info-bar:after {
+    content: '\A Dit vind ik kunst';
+    font-weight: bold;
+    color: #95e785;
+    white-space: pre;
+}
+
+.opinion-no>.info-bar:after {
+    content: '\A Dit vind ik geen kunst';
+    font-weight: bold;
+    color: #e78585;
+    white-space: pre;
 }

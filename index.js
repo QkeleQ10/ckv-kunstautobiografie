@@ -5,7 +5,7 @@ document.querySelectorAll('.tip-link').forEach(e => {
     e.addEventListener('click', event => {
         event.stopPropagation()
         event.target.classList.add('active')
-        openTip(event.target.parentElement, event.target.dataset.tip)
+        openTip(event.target.dataset.tip, event.target.parentElement)
     })
 })
 
@@ -24,25 +24,28 @@ document.querySelectorAll('.music-card').forEach(e => {
     })
 })
 
-function openTip(about, clarification) {
-    let popupContainer = document.createElement('div')
-    popupContainer.classList.add('popup-container')
-    document.body.appendChild(popupContainer)
-    popupContainer.innerHTML = `<div class="popup">
-        <div style="display: flex; width: 100%; justify-content: space-between;">
-            <h2>Toelichting over ${about.getAttribute('title')}</h2>
-            <a class="popup-close">close</a>
-        </div>
-        <div class="popup-clone" style="pointer-events: none;"></div>
-        <p id="popup-body">${clarification}</p>
-    </div>`
-    popupContainer.onclick = closeTip
-    let clone = about.cloneNode(true)
-    document.querySelector('.popup-clone').appendChild(clone)
-    document.querySelector('main').style.pointerEvents = "none"
+function openTip(body, origin) {
+    let popup = document.createElement('div')
+    popup.classList.add('popup')
+    popup.innerHTML = `
+        <h2 class="popup-title">${origin ? "Toelichting over " + origin.getAttribute('title') : "Informatie"}</h2>
+        <a class="popup-close" title="Sluiten" onclick="closeTip(this.parentElement)">close</a>
+        <div class="popup-clone"></div>
+        <p class="popup-body">${body || "Geen inhoud."}
+        <br><br>
+        <b>${origin.querySelector('video') ? "Hover over de video om geluid af te spelen." : ""}</b></p>`
+    document.body.appendChild(popup)
+    if (origin) {
+        let clone = origin.cloneNode(true)
+        document.querySelector('.popup-clone').appendChild(clone)
+    }
+
+    document.querySelectorAll('.popup-clone:has(video)').forEach(e => {
+        e.addEventListener('mouseover', () => e.querySelector('video').muted = false)
+        e.addEventListener('mouseout', () => e.querySelector('video').muted = true)
+    })
 }
 
-function closeTip(event) {
-    this.remove()
-    document.querySelector('main').style.pointerEvents = ""
+function closeTip(element) {
+    element.remove()
 }

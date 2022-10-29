@@ -2,13 +2,23 @@
 @import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0');
 
 * {
-    transition: scale 300ms, rotate 300ms;
+    transition: translate 300ms, scale 300ms, rotate 300ms;
+    box-sizing: border-box;
+    font-family: 'Roboto Slab', sans-serif;
 }
 
 html,
 body {
     margin: 0;
-    width: 100vw;
+    width: 100%;
+    background-color: #000000;
+    /* overflow: overlay; */
+}
+
+main {
+    padding: 1em 0;
+    min-height: 100vh;
+    background: linear-gradient(to left bottom, #c0ffc9, #b3fff7, #ccffff, #effdff, #ffffff);;
 }
 
 h1,
@@ -16,11 +26,11 @@ h2,
 h3,
 p {
     margin: 0;
-    font-family: 'Roboto Slab', sans-serif;
 }
 
 section {
-    padding: 2em;
+    padding: 1em 2em;
+    width: 100%;
 }
 
 .item {
@@ -61,51 +71,45 @@ section {
     scale: 1.25;
 }
 
-.popup-container {
-    position: absolute;
-    width: 100vw;
-    height: 100vh;
-    top: 0;
-    left: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #00000080;
-    z-index: 100;
-    cursor: pointer;
-    animation: popupContainerAppear 300ms;
+body:has(.popup), body:has(.popup) main {
+    overflow: hidden;
+}
+
+body:has(.popup) main {
+    translate: 0 -25vh;
+    scale: 0.9;
+    opacity: 0.7;
+}
+
+body:has(.popup) main * {
+    pointer-events: none;
 }
 
 .popup {
-    display: flex;
-    flex-direction: column;
-    gap: 2em;
-    align-items: center;
-    margin: 2em;
-    padding: 2em;
-    background: #ffffff;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    padding: 2em 3em;
+    gap: 1em;
+    display: grid;
+    grid-template:
+        'clone title close' min-content
+        'clone body body' 1fr
+        / auto 1fr min-content;
+    color: #ffffff;
+    background-color: #000000;
+    z-index: 100;
     animation: popupAppear 300ms;
 }
 
-.popup-clone>* {
-    margin: 0;
-    position: static !important;
-    translate: 0 !important;
-}
-
-.popup-clone .grid-item {
-    min-height: 40vh;
-    max-width: 80vw;
-    aspect-ratio: 16/9;
-}
-
-.popup-clone .opinion-hero {
-    aspect-ratio: 1;
+.popup-title {
+    grid-area: title;
 }
 
 .popup-close {
+    grid-area: close;
     font-family: 'Material Symbols Outlined';
-    color: #333333;
     font-size: 2em;
     cursor: pointer;
 }
@@ -115,22 +119,37 @@ section {
     scale: 1.25;
 }
 
-@keyframes popupContainerAppear {
-    from {
-        background: #00000000;
-    }
+.popup-clone {
+    grid-area: clone;
+}
 
-    to {
-        background: #00000080;
-    }
+.popup-clone>* {
+    margin: 0;
+    position: static !important;
+    translate: 0 !important;
+    pointer-events: none;
+}
+
+.popup-clone .grid-item {
+    min-height: 30vh;
+    max-width: 50vw;
+    aspect-ratio: 16/9;
+}
+
+.popup-clone .opinion-hero {
+    aspect-ratio: 1;
+}
+
+.popup-body {
+    grid-area: body;
 }
 
 @keyframes popupAppear {
     from {
-        scale: 0;
+        translate: 0 100%;
     }
 
     to {
-        scale: 1
+        translate: 0
     }
 }

@@ -1,0 +1,35 @@
+.timeline {
+    list-style-type: none;
+}
+
+.timeline>li {
+    position: relative;
+    padding-bottom: 1.5em;
+}
+
+.timeline>li:before {
+    content: '';
+    background-color: #000000;
+    position: absolute;
+    bottom: -8px;
+    top: 8px;
+    left: -13px;
+    width: 2px;
+}
+
+.timeline>li:after {
+    content: '';
+    background-color: #000000;
+    border-radius: 100%;
+    border: #ffffff solid 2px;
+    position: absolute;
+    left: -20px;
+    top: 26px;
+    height: 12px;
+    width: 12px;
+}
+
+.timeline>li>span {
+    font-size: .75em;
+    font-weight: bold;
+}
