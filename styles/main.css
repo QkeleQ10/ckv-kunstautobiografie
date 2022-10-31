@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0');
 
 * {
-    transition: translate 300ms, scale 300ms, rotate 300ms, opacity 300ms;
+    transition: translate 300ms, scale 300ms, rotate 300ms, opacity 300ms, grid-template 300ms;
     box-sizing: border-box;
     font-family: 'Roboto Slab', sans-serif;
 }
@@ -41,7 +41,6 @@ section {
 }
 
 .card {
-    margin-right: -5em;
     box-shadow: 0 0.5em 1em #00000080;
 }
 

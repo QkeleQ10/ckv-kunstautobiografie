@@ -7,14 +7,10 @@
     padding-bottom: 1.5em;
 }
 
-.timeline>li:before {
-    content: '';
-    background-color: #000000;
-    position: absolute;
-    bottom: -8px;
-    top: 8px;
-    left: -13px;
-    width: 2px;
+.timeline {
+    border-left: #000000 2px solid;
+    padding-left: 1em;
+    margin-left: 1em;
 }
 
 .timeline>li:after {
@@ -23,8 +19,8 @@
     border-radius: 100%;
     border: #ffffff solid 2px;
     position: absolute;
-    left: -20px;
-    top: 26px;
+    left: -25px;
+    top: 25px;
     height: 12px;
     width: 12px;
 }

@@ -1,5 +1,5 @@
-const musicPlr = document.querySelector('#music-player')
-const musicSrc = document.querySelector('#music-source')
+const musicPlr = document.querySelector('#music-player'),
+    musicSrc = document.querySelector('#music-source')
 
 document.querySelectorAll('.tip-link').forEach(e => {
     e.addEventListener('click', event => {
