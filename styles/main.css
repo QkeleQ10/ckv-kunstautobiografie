@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0');
 
 * {
-    transition: translate 300ms, scale 300ms, rotate 300ms, opacity 300ms;
+    transition: translate 300ms, scale 300ms, rotate 300ms, opacity 300ms, filter 300ms;
     box-sizing: border-box;
     font-family: 'Roboto Slab', sans-serif;
 }
@@ -78,14 +78,6 @@ section {
     scale: 1.25;
 }
 
-body:has(.popup:not(.hide)) main {
-    translate: 0 -25vh;
-    scale: 0.9;
-    opacity: 0.7;
-    pointer-events: none;
-    overflow: hidden;
-}
-
 .popup {
     position: fixed;
     width: 100%;
@@ -151,6 +143,15 @@ body:has(.popup:not(.hide)) main {
 
 .popup-body {
     grid-area: body;
+}
+
+body:has(.popup:not(.hide)) main {
+    translate: 0 -15vh;
+    scale: 0.9;
+    opacity: 0.5;
+    filter: blur(2px) grayscale(0.5);
+    pointer-events: none;
+    overflow: hidden;
 }
 
 @keyframes popupAppear {

@@ -25,6 +25,7 @@ document.querySelectorAll('.music-card').forEach(e => {
 })
 
 function openTip(body, origin) {
+    document.querySelectorAll('video').forEach(vid => vid.pause())
     let popup = document.createElement('div')
     popup.classList.add('popup')
     popup.innerHTML =
@@ -38,8 +39,8 @@ function openTip(body, origin) {
         ) +
         (
             !origin.dataset.noClone
-            ? `<div class="popup-clone">${origin.outerHTML}</div>`
-            : ``
+                ? `<div class="popup-clone">${origin.outerHTML}</div>`
+                : ``
         ) +
         `<p class="popup-body">${body || "Geen inhoud."}` + (
             origin.querySelector('video')
@@ -47,11 +48,6 @@ function openTip(body, origin) {
                 : ``
         ) + "</p>"
     document.body.appendChild(popup)
-    // if (origin) {
-    //     let clone = origin.cloneNode(true)
-    //     document.querySelector('.popup-clone').appendChild(clone)
-    // }
-
     document.querySelectorAll('.popup-clone:has(video)').forEach(e => {
         e.addEventListener('mouseover', () => e.querySelector('video').muted = false)
         e.addEventListener('mouseout', () => e.querySelector('video').muted = true)
@@ -60,5 +56,8 @@ function openTip(body, origin) {
 
 function closeTip(element) {
     element.classList.add('hide')
-    setTimeout(() => element.remove(), 300)
+    setTimeout(() => {
+        element.remove()
+        document.querySelectorAll('video').forEach(vid => vid.play())
+}, 300)
 }

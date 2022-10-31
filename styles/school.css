@@ -26,6 +26,7 @@
 }
 
 .timeline>li>span {
+    color: #1f5f45;
     font-size: .75em;
     font-weight: bold;
 }
