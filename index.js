@@ -47,5 +47,6 @@ function openTip(body, origin) {
 }
 
 function closeTip(element) {
-    element.remove()
+    element.classList.add('hide')
+    setTimeout(() => element.remove(), 300)
 }
