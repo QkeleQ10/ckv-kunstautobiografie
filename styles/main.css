@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0');
 
 * {
-    transition: translate 300ms, scale 300ms, rotate 300ms, opacity 300ms, grid-template 300ms;
+    transition: translate 300ms, scale 300ms, rotate 300ms, opacity 300ms;
     box-sizing: border-box;
     font-family: 'Roboto Slab', sans-serif;
 }
@@ -16,22 +16,29 @@ body {
 }
 
 main {
-    padding: 1em 0;
     height: 100vh;
-    background: linear-gradient(to left bottom, #c0ffc9, #b3fff7, #ccffff, #effdff, #ffffff);
+    background: linear-gradient(to right bottom, #f0faf1, #b7cab7);
     overflow: overlay;
+}
+
+h1 {
+    font-size: 2em;
 }
 
 h1,
 h2,
 h3,
+h4,
+h5,
+h6,
 p {
     margin: 0;
 }
 
 section {
-    padding: 1em 2em;
     width: 100%;
+    padding: 1em 2em;
+    margin-bottom: 1em;
 }
 
 .item {
@@ -122,7 +129,7 @@ body:has(.popup:not(.hide)) main {
 }
 
 .popup-clone>* {
-    margin: 0;
+    margin: 0 !important;
     position: static !important;
     translate: 0 !important;
     pointer-events: none;
@@ -138,6 +145,10 @@ body:has(.popup:not(.hide)) main {
     aspect-ratio: 1;
 }
 
+.popup-clone .tip-link {
+    opacity: 0;
+}
+
 .popup-body {
     grid-area: body;
 }
@@ -149,5 +160,16 @@ body:has(.popup:not(.hide)) main {
 
     to {
         translate: 0
+    }
+}
+
+@media (max-width: 700px) {
+    .popup {
+        height: 100vh;
+        grid-template:
+            'title close' min-content
+            'body body' auto
+            'clone clone' min-content
+            / auto min-content;
     }
 }

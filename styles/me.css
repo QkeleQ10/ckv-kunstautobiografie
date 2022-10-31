@@ -1,0 +1,32 @@
+.me {
+    padding: 2em;
+    background: linear-gradient(300deg, #227538, #1f5f45);
+    color: #ffffff;
+}
+
+.me:last-of-type {
+    width: 100vw;
+    padding: 0;
+    margin-bottom: 0;
+    display: grid;grid-template:
+            'body' auto
+            'img' 5em
+            / 100vw;
+}
+
+#me1 {
+    padding: 2em;
+}
+
+#me2 {
+    width: 100vw;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+}
+
+#me2 img {
+    width: calc(100vw / 7);
+    height: 5em;
+    object-fit: cover;
+}

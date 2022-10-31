@@ -27,18 +27,30 @@ document.querySelectorAll('.music-card').forEach(e => {
 function openTip(body, origin) {
     let popup = document.createElement('div')
     popup.classList.add('popup')
-    popup.innerHTML = `
-        <h2 class="popup-title">${origin ? "Toelichting over " + origin.getAttribute('title') : "Informatie"}</h2>
-        <a class="popup-close" title="Sluiten" onclick="closeTip(this.parentElement)">close</a>
-        <div class="popup-clone"></div>
-        <p class="popup-body">${body || "Geen inhoud."}
-        <br><br>
-        <b>${origin.querySelector('video') ? "Hover over de video om geluid af te spelen." : ""}</b></p>`
+    popup.innerHTML =
+        (
+            origin
+                ? `<h2 class="popup-title">Toelichting over ${origin.getAttribute('title')}</h2>`
+                : `<h2 class="popup-title">Informatie</h2>`
+        ) +
+        (
+            `<a class="popup-close" title="Sluiten" onclick="closeTip(this.parentElement)">close</a>`
+        ) +
+        (
+            !origin.dataset.noClone
+            ? `<div class="popup-clone">${origin.outerHTML}</div>`
+            : ``
+        ) +
+        `<p class="popup-body">${body || "Geen inhoud."}` + (
+            origin.querySelector('video')
+                ? `<br><br><b>Hover over de video om geluid af te spelen.</b>`
+                : ``
+        ) + "</p>"
     document.body.appendChild(popup)
-    if (origin) {
-        let clone = origin.cloneNode(true)
-        document.querySelector('.popup-clone').appendChild(clone)
-    }
+    // if (origin) {
+    //     let clone = origin.cloneNode(true)
+    //     document.querySelector('.popup-clone').appendChild(clone)
+    // }
 
     document.querySelectorAll('.popup-clone:has(video)').forEach(e => {
         e.addEventListener('mouseover', () => e.querySelector('video').muted = false)
