@@ -49,8 +49,20 @@ function openTip(body, origin) {
         ) + "</p>"
     document.body.appendChild(popup)
     document.querySelectorAll('.popup-clone:has(video)').forEach(e => {
-        e.addEventListener('mouseover', () => e.querySelector('video').muted = false)
-        e.addEventListener('mouseout', () => e.querySelector('video').muted = true)
+        e.addEventListener('mouseover', () => {
+            if (!musicPlr.paused) {
+                musicPlr.pause()
+                musicPlr.classList.add('hold')
+            }
+            e.querySelector('video').muted = false
+        })
+        e.addEventListener('mouseout', () => {
+            if (musicPlr.classList.contains('hold')) {
+                musicPlr.play()
+                musicPlr.classList.remove('hold')
+            }
+            e.querySelector('video').muted = true
+        })
     })
 }
 
