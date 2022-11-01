@@ -11,7 +11,7 @@ document.querySelectorAll('.tip-link').forEach(e => {
 
 document.querySelectorAll('.music-card').forEach(e => {
     e.addEventListener('click', () => {
-        const src = `music/${e.dataset.music}.mp3`
+        const src = `music/${e.dataset.music}.webm`
         document.querySelectorAll('.playing').forEach(e1 => e1.classList.remove('playing'))
         if (musicSrc.getAttribute('src') != src) {
             musicSrc.src = src
@@ -35,7 +35,7 @@ function openTip(body, origin) {
                 : `<h2 class="popup-title">Informatie</h2>`
         ) +
         (
-            `<a class="popup-close" title="Sluiten" onclick="closeTip(this.parentElement)">close</a>`
+            `<span role="button" tabindex=0 class="popup-close" title="Sluiten" onclick="closeTip(this.parentElement)">close</span>`
         ) +
         (
             !origin.dataset.noClone
@@ -59,5 +59,5 @@ function closeTip(element) {
     setTimeout(() => {
         element.remove()
         document.querySelectorAll('video').forEach(vid => vid.play())
-}, 300)
+    }, 300)
 }

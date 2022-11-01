@@ -41,7 +41,8 @@ section {
     margin-bottom: 1em;
 }
 
-.item {
+.item,
+#me2 div {
     background-size: cover;
     background-position: center;
     overflow: hidden;
@@ -70,11 +71,11 @@ section {
     text-shadow: 0 0 20px #000000;
     font-size: 2em;
     cursor: help;
-    z-index: 2;
+    /* z-index: 2; */
 }
 
 .tip-link:hover,
-.tip-link:hover {
+.tip-link:focus {
     scale: 1.25;
 }
 
