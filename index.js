@@ -73,3 +73,13 @@ function closeTip(element) {
         document.querySelectorAll('video').forEach(vid => vid.play())
     }, 300)
 }
+
+function getAllTips() {
+    let output = document.createElement('p')
+    document.querySelector('main').prepend(output)
+    output.style.background = 'white'
+    document.querySelectorAll('.tip-link').forEach(e => {
+        output.innerText += e.dataset.tip + ' '
+    })
+    output.scrollIntoView()
+}
