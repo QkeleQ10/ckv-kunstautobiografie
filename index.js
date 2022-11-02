@@ -28,26 +28,41 @@ function openTip(body, origin) {
     document.querySelectorAll('video').forEach(vid => vid.pause())
     let popup = document.createElement('div')
     popup.classList.add('popup')
-    popup.innerHTML =
-        (
-            origin
-                ? `<h2 class="popup-title">Toelichting over ${origin.getAttribute('title')}</h2>`
-                : `<h2 class="popup-title">Informatie</h2>`
-        ) +
-        (
-            `<span role="button" tabindex=0 class="popup-close" title="Sluiten" onclick="closeTip(this.parentElement)">close</span>`
-        ) +
-        (
-            !origin.dataset.noClone
-                ? `<div class="popup-clone">${origin.outerHTML}</div>`
-                : ``
-        ) +
-        `<p class="popup-body">${body || "Geen inhoud."}` + (
-            origin.querySelector('video')
-                ? `<br><br><b>Hover over de video om geluid af te spelen.</b>`
-                : ``
-        ) + "</p>"
     document.body.appendChild(popup)
+    // popup.innerHTML =
+    //     (
+    //         origin
+    //             ? `<h2 class="popup-title">Toelichting over ${origin.getAttribute('title')}</h2>`
+    //             : `<h2 class="popup-title">Informatie</h2>`
+    //     ) +
+    //     (
+    //         `<span role="button" tabindex=0 class="popup-close" title="Sluiten" onclick="closeTip(this.parentElement)">close</span>`
+    //     ) +
+    //     (
+    //         !origin.dataset.noClone
+    //             ? `<div class="popup-clone">${origin.outerHTML}</div>`
+    //             : ``
+    //     ) +
+    //     `<p class="popup-body">${body || "Geen inhoud."}` + (
+    //         origin.querySelector('video')
+    //             ? `<br><br><b>Hover over de video om geluid af te spelen.</b>`
+    //             : ``
+    //     ) + "</p>"
+
+    if (origin && origin.getAttribute('title')) popup.innerHTML += `<h2 class="popup-title">Toelichting over ${origin.getAttribute('title')}</h2>`
+    else popup.innerHTML += `<h2 class="popup-title">Informatie</h2>`
+
+    popup.innerHTML += `<span role="button" tabindex=0 class="popup-close" title="Sluiten" onclick="closeTip(this.parentElement)">close</span>`
+
+    if (!origin.dataset.noClone) {
+        popup.innerHTML += `<div class="popup-clone"></div>`
+        document.querySelector('.popup-clone').append(origin.cloneNode(true))
+    }
+
+    if (origin.querySelector('video')) popup.innerHTML += `<p class="popup-body">${body || "Geen inhoud."}<br><br><b>Hover over de video om geluid af te spelen.</b></p>`
+    else popup.innerHTML += `<p class="popup-body">${body || "Geen inhoud."}</p>`
+
+
     document.querySelectorAll('.popup-clone:has(video)').forEach(e => {
         e.addEventListener('mouseover', () => {
             if (!musicPlr.paused) {

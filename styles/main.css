@@ -62,6 +62,10 @@ section {
     text-shadow: 0 0 20px #000000;
 }
 
+.symbol {
+    font-family: 'Material Symbols Outlined';
+}
+
 .tip-link {
     color: white;
     position: absolute;
