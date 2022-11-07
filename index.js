@@ -29,25 +29,6 @@ function openTip(body, origin) {
     let popup = document.createElement('div')
     popup.classList.add('popup')
     document.body.appendChild(popup)
-    // popup.innerHTML =
-    //     (
-    //         origin
-    //             ? `<h2 class="popup-title">Toelichting over ${origin.getAttribute('title')}</h2>`
-    //             : `<h2 class="popup-title">Informatie</h2>`
-    //     ) +
-    //     (
-    //         `<span role="button" tabindex=0 class="popup-close" title="Sluiten" onclick="closeTip(this.parentElement)">close</span>`
-    //     ) +
-    //     (
-    //         !origin.dataset.noClone
-    //             ? `<div class="popup-clone">${origin.outerHTML}</div>`
-    //             : ``
-    //     ) +
-    //     `<p class="popup-body">${body || "Geen inhoud."}` + (
-    //         origin.querySelector('video')
-    //             ? `<br><br><b>Hover over de video om geluid af te spelen.</b>`
-    //             : ``
-    //     ) + "</p>"
 
     if (origin && origin.getAttribute('title')) popup.innerHTML += `<h2 class="popup-title">Toelichting over ${origin.getAttribute('title')}</h2>`
     else popup.innerHTML += `<h2 class="popup-title">Informatie</h2>`
