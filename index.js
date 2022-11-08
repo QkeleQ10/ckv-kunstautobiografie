@@ -71,6 +71,7 @@ function closeTip(element) {
 }
 
 function getAllTips() {
+    document.getElementById('alltipsbutton').remove()
     let output = document.createElement('p')
     document.querySelector('main').prepend(output)
     output.style.background = 'white'
